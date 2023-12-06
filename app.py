@@ -1,5 +1,8 @@
 import streamlit as st
-st.set_page_config(page_title="Wind Forecasting",layout="wide")
+import pandas as pd
+import numpy as np
+
+chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["col1", "col2", "col3"])
 
 def main():
     # Create a sidebar with navigation options
@@ -60,10 +63,16 @@ def render_predictors_page():
 def render_wind_page():
     st.title("Wind Predictions")
     st.write("Wind predictions for the next 48 hours are shown below")
+    st.line_chart(
+   chart_data, x="col1", y=["col2", "col3"], color=["#FF0000", "#0000FF"]  )
+st.set_page_config(page_title="Wind Forecasting",layout="wide")
 
 def render_solar_page():
     st.title("Solar Predictions")
     st.write("Solar predictions for the next 48 hours are shown below")
+    st.line_chart(
+   chart_data, x="col1", y=["col2", "col3"], color=["#FF0000", "#0000FF"]  )
+#st.set_page_config(page_title="Solar Forecasting",layout="wide")
 
 def render_tech_page():
     st.title("Latest Technological Advancements in our Domain")
